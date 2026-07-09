@@ -15,5 +15,6 @@ export const api = {
   },
   summary: {
     generate: (data) => apiClient.post('/api/summary/generate', data).then(res => res.data),
+    bulkSynthesize: (data) => apiClient.post('/api/summary/generate', data).then(res => res.data),
   }
 };

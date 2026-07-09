@@ -17,6 +17,7 @@ import Trend from './pages/Trend';
 import SubmitFeedback from './pages/SubmitFeedback';
 import AISummary from './pages/AISummary';
 import Profile from './pages/Profile';
+import Landing from './pages/Landing';
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -30,12 +31,12 @@ const queryClient = new QueryClient({
 const ProtectedRoute = () => {
   const isAuthenticated = useAuthStore(state => state.isAuthenticated);
   if (!isAuthenticated) return <Navigate to="/login" replace />;
-  
+
   return (
     <div className="min-h-screen flex flex-col relative z-0">
       <BackgroundCanvas />
       <TopNav />
-      <main className="flex-1 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 z-10">
+      <main className="flex-1 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-10 pt-4 z-10">
         <Outlet />
       </main>
     </div>
@@ -48,7 +49,8 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/login" element={<Auth />} />
-          
+          <Route path="/landing" element={<Landing />} />
+
           <Route element={<ProtectedRoute />}>
             <Route path="/" element={<Dashboard />} />
             <Route path="/shortlist" element={<Shortlist />} />
@@ -58,20 +60,21 @@ function App() {
             <Route path="/summary" element={<AISummary />} />
             <Route path="/profile" element={<Profile />} />
           </Route>
-          
+
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </BrowserRouter>
-      <Toaster 
-        position="bottom-right" 
+      <Toaster
+        position="bottom-right"
         toastOptions={{
           style: {
             background: 'rgba(255, 255, 255, 0.04)',
-            backdropFilter: 'blur(20px)',
-            border: '1px solid rgba(255,255,255,0.08)',
+            backdropFilter: 'blur(24px)',
+            border: '1px solid rgba(255,255,255,0.14)',
             color: '#f1f1f4',
+            borderRadius: '16px',
           }
-        }} 
+        }}
       />
     </QueryClientProvider>
   );
