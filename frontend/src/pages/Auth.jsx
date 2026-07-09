@@ -17,7 +17,7 @@ export default function Auth() {
   const isAuthenticated = useAuthStore(state => state.isAuthenticated);
 
   if (isAuthenticated) {
-    return <Navigate to="/" replace />;
+    return <Navigate to="/dashboard" replace />;
   }
 
   const handleSubmit = (e) => {
@@ -43,22 +43,13 @@ export default function Auth() {
         <div className="absolute bottom-[-10%] right-[-12%] h-[36rem] w-[36rem] rounded-full bg-brandPurple/24 blur-[140px]" />
       </div>
 
-      <Link to="/landing" className="absolute left-5 top-5 z-20 inline-flex items-center gap-2 rounded-full border border-white/12 bg-white/[0.06] px-4 py-2 text-sm font-semibold text-textMuted backdrop-blur-xl transition-colors hover:text-white">
+      <Link to="/" className="absolute left-5 top-5 z-20 inline-flex items-center gap-2 rounded-full border border-white/[0.1] bg-white/[0.06] px-4 py-2 text-sm font-semibold text-textMuted backdrop-blur-xl transition-colors hover:text-white">
         <ArrowLeft size={16} />
         Landing
       </Link>
 
       <div className="z-10 grid w-full max-w-5xl items-center gap-8 md:grid-cols-[1.05fr_0.95fr]">
         <div className="hidden space-y-7 md:block">
-          <div className="flex items-center gap-3">
-            <div className="flex h-14 w-14 items-center justify-center overflow-hidden rounded-full border border-white/25 bg-frost shadow-glow">
-              <img src="/traige-logo.png" alt="Traige logo" className="h-16 w-16 object-cover object-center" />
-            </div>
-            <div>
-              <div className="font-display text-2xl font-bold tracking-[0.18em] text-white">TRAIGE</div>
-              <div className="text-xs font-semibold uppercase tracking-[0.32em] text-textMuted">Since 2026</div>
-            </div>
-          </div>
 
           <h1 className="font-display text-5xl font-bold leading-tight tracking-normal text-white">
             Welcome to your feedback command center.
@@ -73,7 +64,7 @@ export default function Auth() {
               ['Priority scoring', Brain],
               ['Clean dashboard experience', CheckCircle2],
             ].map(([label, Icon]) => (
-              <div key={label} className="flex items-center gap-3 rounded-2xl border border-white/12 bg-white/[0.06] px-4 py-3 backdrop-blur-xl">
+              <div key={label} className="flex items-center gap-3 rounded-2xl border border-white/[0.1] bg-white/[0.06] px-4 py-3 backdrop-blur-xl">
                 <Icon size={18} className="text-cyan-300" />
                 <span className="font-semibold text-white">{label}</span>
               </div>
@@ -81,7 +72,7 @@ export default function Auth() {
           </div>
         </div>
 
-        <GlassCard className="mx-auto w-full max-w-md border-white/18 p-7 sm:p-8">
+        <GlassCard className="mx-auto w-full max-w-md border-white/[0.1] p-7 sm:p-8">
           <div className="mb-7 md:hidden">
             <div className="mb-4 flex h-14 w-14 items-center justify-center overflow-hidden rounded-full border border-white/25 bg-frost shadow-glow">
               <img src="/traige-logo.png" alt="Traige logo" className="h-16 w-16 object-cover object-center" />

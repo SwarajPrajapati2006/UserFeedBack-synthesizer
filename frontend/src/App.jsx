@@ -49,10 +49,10 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/login" element={<Auth />} />
-          <Route path="/landing" element={<Landing />} />
+          <Route path="/" element={<Landing />} />
 
           <Route element={<ProtectedRoute />}>
-            <Route path="/" element={<Dashboard />} />
+            <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/shortlist" element={<Shortlist />} />
             <Route path="/clusters" element={<Clusters />} />
             <Route path="/trend" element={<Trend />} />
@@ -61,7 +61,7 @@ function App() {
             <Route path="/profile" element={<Profile />} />
           </Route>
 
-          <Route path="*" element={<Navigate to="/" replace />} />
+          <Route path="*" element={<Navigate to="/dashboard" replace />} />
         </Routes>
       </BrowserRouter>
       <Toaster

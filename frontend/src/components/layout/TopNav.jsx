@@ -9,7 +9,7 @@ export const TopNav = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
 
   const navItems = [
-    { name: 'Dashboard', path: '/', icon: LayoutDashboard },
+    { name: 'Dashboard', path: '/dashboard', icon: LayoutDashboard },
     { name: 'Shortlist', path: '/shortlist', icon: Zap },
     { name: 'Clusters', path: '/clusters', icon: Hash },
     { name: 'Trend', path: '/trend', icon: BarChart2 },
@@ -36,7 +36,7 @@ export const TopNav = () => {
                 <NavLink
                   key={item.name}
                   to={item.path}
-                  end={item.path === '/'}
+                  end={item.path === '/dashboard'}
                   className={({ isActive }) => cn(
                     "hidden md:flex items-center gap-2 rounded-full px-3.5 py-2 text-xs font-bold uppercase tracking-[0.12em] transition-all duration-300",
                     isActive
@@ -89,7 +89,7 @@ export const TopNav = () => {
               <NavLink
                 key={item.name}
                 to={item.path}
-                end={item.path === '/'}
+                end={item.path === '/dashboard'}
                 onClick={() => setMobileOpen(false)}
                 className={({ isActive }) => cn(
                   "flex items-center gap-3 rounded-2xl px-3 py-3 text-sm font-semibold transition-colors",
