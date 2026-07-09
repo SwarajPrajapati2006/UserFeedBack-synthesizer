@@ -17,7 +17,6 @@ export default function Shortlist() {
     <div className="max-w-4xl mx-auto space-y-6">
       <div className="mb-8">
         <h1 className="text-3xl font-bold text-white mb-2 flex items-center gap-3">
-          <div className="w-10 h-10 rounded-lg bg-rose-500/20 text-rose-400 flex items-center justify-center"><Zap size={20} /></div>
           The Shortlist
         </h1>
         <p className="text-textMuted">The absolute highest priority items to address, mathematically ranked.</p>
@@ -52,9 +51,7 @@ export default function Shortlist() {
           
           {items.map((item) => (
             <GlassCard key={item._id} interactive className="p-0 relative overflow-hidden group">
-              <div className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-rose-500 to-amber-500 opacity-50 group-hover:opacity-100 transition-opacity"></div>
-              
-              <div className="p-6 pl-8">
+              <div className="p-6">
                 <div className="flex flex-col md:flex-row md:items-start justify-between gap-6">
                   
                   <div className="flex-1 space-y-4">

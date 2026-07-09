@@ -20,17 +20,17 @@
 
 @layer components {
   .glass-panel {
-    @apply bg-[rgba(255,255,255,0.06)] backdrop-blur-[24px] border border-[rgba(255,255,255,0.1)] rounded-2xl transition-all duration-300;
+    @apply bg-white/[0.02] backdrop-blur-md border border-white/[0.03] rounded-2xl transition-all duration-300;
   }
 
   .glass-panel-hover:hover {
-    @apply bg-[rgba(255,255,255,0.12)];
-    box-shadow: 0 24px 90px rgba(138, 91, 244, 0.28);
-    transform: translateY(-3px);
+    @apply bg-white/[0.04] border-white/[0.06];
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+    transform: translateY(-2px);
   }
 
   .glass-nested {
-    @apply bg-[rgba(255,255,255,0.055)] backdrop-blur-[16px] border border-[rgba(255,255,255,0.18)] rounded-xl;
+    @apply bg-black/20 backdrop-blur-sm border border-white/[0.02] rounded-xl;
   }
 
   .brand-gradient-text {

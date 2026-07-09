@@ -6,7 +6,7 @@ import { EmptyState } from '../components/ui/EmptyState';
 import { Hash, AlertTriangle, ChevronDown, ChevronUp } from 'lucide-react';
 import { ActionTag } from '../components/ui/ActionTag';
 
-const ClusterPanel = ({ cluster, allFeedback }) => {
+const ClusterPanel = ({ cluster, allFeedback, index }) => {
   const [expanded, setExpanded] = useState(false);
   
   // Backend aggregation returns _id as cluster name
@@ -23,7 +23,7 @@ const ClusterPanel = ({ cluster, allFeedback }) => {
       >
         <div className="flex items-center gap-4">
           <div className="w-12 h-12 rounded-xl bg-violet-500/10 flex items-center justify-center text-violet-400 border border-violet-500/20">
-            <Hash size={20} />
+            <span className="font-bold text-lg">{index + 1}</span>
           </div>
           <div>
             <h3 className="text-xl font-bold text-white">{clusterName}</h3>
@@ -79,7 +79,6 @@ export default function Clusters() {
     <div className="max-w-5xl mx-auto space-y-6">
       <div className="mb-8">
         <h1 className="text-3xl font-bold text-white mb-2 flex items-center gap-3">
-          <div className="w-10 h-10 rounded-lg bg-violet-500/20 text-violet-400 flex items-center justify-center"><Hash size={20} /></div>
           Thematic Clusters
         </h1>
         <p className="text-textMuted">Automatically categorized groups of feedback revealing core product themes.</p>
@@ -110,8 +109,8 @@ export default function Clusters() {
 
       {!clLoading && !clError && clusterArr.length > 0 && (
         <div className="space-y-4">
-          {clusterArr.map((cluster) => (
-            <ClusterPanel key={cluster._id} cluster={cluster} allFeedback={feedbackArr} />
+          {clusterArr.map((cluster, index) => (
+            <ClusterPanel key={cluster._id} cluster={cluster} allFeedback={feedbackArr} index={index} />
           ))}
         </div>
       )}
