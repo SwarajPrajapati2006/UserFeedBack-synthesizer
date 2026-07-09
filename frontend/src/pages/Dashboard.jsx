@@ -117,7 +117,7 @@ export default function Dashboard() {
 
           <GlassCard className="p-6">
             <div className="flex justify-between items-center mb-6">
-              <h3 className="text-lg font-bold text-white flex items-center gap-2"><Hash size={18} className="text-violet-400" /> Cluster Breakdown</h3>
+              <h3 className="text-lg font-bold text-white flex items-center gap-2"> Cluster Breakdown</h3>
               <Link to="/clusters" className="text-sm font-medium text-violet-400 hover:text-violet-300 flex items-center gap-1">View all <ArrowRight size={14} /></Link>
             </div>
             {clLoading ? <CardSkeleton /> : (Array.isArray(clustersData) && clustersData.length > 0) ? (
