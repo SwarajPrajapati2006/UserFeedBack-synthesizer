@@ -89,41 +89,43 @@ export default function Landing() {
     <div className="min-h-screen overflow-hidden bg-background text-textMain">
       <div className="fixed inset-0 pointer-events-none">
         <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.035)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:76px_76px] [mask-image:radial-gradient(circle_at_50%_18%,black,transparent_76%)]" />
-        <motion.div
-          animate={{ x: [0, 45, 0], y: [0, -28, 0] }}
-          transition={{ duration: 18, repeat: Infinity, ease: 'easeInOut' }}
-          className="absolute left-[-14%] top-[-18%] h-[44rem] w-[44rem] rounded-full bg-brandBlue/24 blur-[150px]"
-        />
-        <motion.div
-          animate={{ x: [0, -34, 0], y: [0, 42, 0] }}
-          transition={{ duration: 22, repeat: Infinity, ease: 'easeInOut' }}
-          className="absolute right-[-16%] top-[8%] h-[42rem] w-[42rem] rounded-full bg-brandPurple/22 blur-[150px]"
-        />
-        <div className="absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-frost/10 to-transparent" />
       </div>
 
-      <nav className="relative z-20 px-4 py-5">
-        <div className="mx-auto flex max-w-7xl items-center justify-between rounded-full border border-white/15 bg-white/[0.075] px-4 py-3 shadow-glass backdrop-blur-2xl sm:px-5">
-          <BrandMark />
-          <div className="hidden items-center rounded-full border border-white/10 bg-black/15 p-1 md:flex">
-            {navItems.map((item) => (
-              <a
-                key={item}
-                href={`#${item.toLowerCase()}`}
-                className="rounded-full px-5 py-2 text-xs font-bold uppercase tracking-[0.18em] text-textMuted transition-colors hover:bg-white/10 hover:text-white"
+      <nav className="sticky top-0 z-50 w-full px-3 py-4">
+        <div className="mx-auto max-w-7xl">
+          <div className="relative flex min-h-16 items-center justify-between overflow-hidden rounded-full border border-white/5 bg-white/[0.075] px-4 shadow-glass backdrop-blur-2xl sm:px-5">
+            <div className="pointer-events-none absolute inset-x-8 top-0 h-px bg-gradient-to-r from-transparent via-white/5 to-transparent" />
+            
+            <div className="flex items-center">
+              <span 
+                className="text-xl pr-1 pt-1 font-bold pl-2 pr-2"
+                style={{ color: '#885AF0', }}
               >
-                {item}
-              </a>
-            ))}
-          </div>
-          <div className="flex items-center gap-2">
-            <Link to="/login" className="hidden rounded-full px-4 py-2 text-sm font-bold text-textMuted transition-colors hover:text-white sm:inline-flex">
-              Sign In
-            </Link>
-            <Link to="/login" className="primary-button px-5 py-2.5">
-              Launch App
-              <ArrowRight size={16} />
-            </Link>
+                TRAIGE
+              </span>
+            </div>
+
+            <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 hidden md:flex items-center gap-2">
+              {navItems.map((item) => (
+                <a
+                  key={item}
+                  href={`#${item.toLowerCase()}`}
+                  className="rounded-full px-3.5 py-2 text-xs font-bold uppercase tracking-[0.12em] transition-all duration-300 text-textMuted hover:text-[#885AF0]"
+                >
+                  {item}
+                </a>
+              ))}
+            </div>
+
+            <div className="flex items-center gap-2">
+              <Link to="/login" className="hidden rounded-full px-4 py-2 text-sm font-bold text-textMuted transition-colors hover:text-[#885AF0] sm:inline-flex">
+                Sign In
+              </Link>
+              <Link to="/login" className="primary-button px-5 py-2.5">
+                Launch App
+                <ArrowRight size={16} />
+              </Link>
+            </div>
           </div>
         </div>
       </nav>
@@ -131,16 +133,6 @@ export default function Landing() {
       <main className="relative z-10">
         <section id="product" className="mx-auto grid min-h-[calc(100vh-96px)] max-w-7xl items-center gap-12 px-4 pb-12 pt-10 sm:px-6 lg:grid-cols-[1.04fr_0.96fr] lg:px-8 lg:pt-4">
           <div>
-            <motion.div
-              initial="hidden"
-              animate="visible"
-              variants={fadeUp}
-              className="mb-7 inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/[0.075] px-4 py-2 text-sm font-semibold text-cyan-100 shadow-glass backdrop-blur-xl"
-            >
-              <Sparkles size={16} className="text-cyan-300" />
-              AI feedback intelligence for product teams
-            </motion.div>
-
             <motion.h1
               initial="hidden"
               animate="visible"
@@ -193,7 +185,7 @@ export default function Landing() {
                 ['AI', 'summaries'],
                 ['Live', 'dashboard'],
               ].map(([value, label]) => (
-                <div key={label} className="rounded-2xl border border-white/12 bg-white/[0.06] p-4 backdrop-blur-xl">
+                <div key={label} className="rounded-2xl border border-white/[0.1] bg-white/[0.06] backdrop-blur-xl p-4 transition-all duration-300 hover:-translate-y-1 hover:bg-white/[0.1]">
                   <div className="font-display text-2xl font-bold text-white">{value}</div>
                   <div className="mt-1 text-xs font-semibold uppercase tracking-[0.16em] text-textMuted">{label}</div>
                 </div>
@@ -207,11 +199,8 @@ export default function Landing() {
             transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1], delay: 0.15 }}
             className="relative"
           >
-            <div className="absolute -inset-10 rounded-full bg-gradient-to-br from-brandBlue/30 via-cyan-400/10 to-brandPurple/30 blur-3xl" />
-            <div className="relative overflow-hidden rounded-[2rem] border border-white/18 bg-white/[0.08] p-4 shadow-glass backdrop-blur-2xl">
-              <div className="rounded-[1.4rem] border border-white/12 bg-background/45 p-5">
+            <div className="relative overflow-hidden rounded-[2rem] border border-white/[0.1] bg-white/[0.06] backdrop-blur-xl p-4">
                 <div className="mb-5 flex items-center justify-between">
-                  <BrandMark compact />
                   <span className="rounded-full border border-emerald-400/25 bg-emerald-400/10 px-3 py-1 text-xs font-bold text-emerald-200">Live Analysis</span>
                 </div>
                 <div className="space-y-3">
@@ -224,7 +213,7 @@ export default function Landing() {
                       key={title}
                       animate={{ y: [0, i === 1 ? -5 : 5, 0] }}
                       transition={{ duration: 5 + i, repeat: Infinity, ease: 'easeInOut' }}
-                      className="rounded-2xl border border-white/12 bg-white/[0.075] p-4"
+                      className="rounded-2xl border border-white/[0.08] bg-white/[0.05] backdrop-blur-md p-4"
                     >
                       <div className="flex items-start justify-between gap-3">
                         <div>
@@ -240,7 +229,6 @@ export default function Landing() {
                     </motion.div>
                   ))}
                 </div>
-              </div>
             </div>
           </motion.div>
         </section>
@@ -259,7 +247,7 @@ export default function Landing() {
                 viewport={{ once: true, margin: '-60px' }}
                 variants={fadeUp}
                 custom={i}
-                className="glass-panel p-6"
+                className="rounded-2xl border border-white/[0.1] bg-white/[0.06] backdrop-blur-xl p-6 transition-all duration-300 hover:-translate-y-1 hover:bg-white/[0.1]"
               >
                 <div className="mb-7 font-display text-6xl font-bold text-white/10">0{i + 1}</div>
                 <h3 className="text-xl font-bold text-white">{step.label}</h3>
@@ -290,9 +278,9 @@ export default function Landing() {
                 viewport={{ once: true, margin: '-40px' }}
                 variants={fadeUp}
                 custom={i}
-                className="glass-panel group p-6 hover:-translate-y-1 hover:bg-white/[0.105]"
+                className="rounded-2xl border border-white/[0.1] bg-white/[0.06] backdrop-blur-xl group p-6 hover:-translate-y-1 hover:bg-white/[0.1] transition-all duration-300"
               >
-                <div className={`mb-5 flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br ${feature.accent} shadow-glow transition-transform duration-300 group-hover:scale-105`}>
+                <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-2xl border border-white/[0.08] bg-white/[0.06] transition-transform duration-300 group-hover:scale-105">
                   <feature.icon size={22} className="text-white" />
                 </div>
                 <h3 className="text-lg font-bold text-white">{feature.title}</h3>
@@ -303,12 +291,6 @@ export default function Landing() {
         </section>
       </main>
 
-      <footer className="relative z-10 border-t border-white/10 px-4 py-8">
-        <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-4 text-sm text-textMuted sm:flex-row">
-          <BrandMark />
-          <span>Built for Hack-Arambh 2026 by Swaraj Prajapati.</span>
-        </div>
-      </footer>
     </div>
   );
 }
