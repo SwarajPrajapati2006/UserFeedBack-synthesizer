@@ -20,39 +20,37 @@ export const TopNav = () => {
   return (
     <nav className="sticky top-0 z-50 w-full px-3 py-4">
       <div className="mx-auto max-w-7xl">
-        <div className="relative flex min-h-16 items-center justify-between overflow-hidden rounded-full border border-white/20 bg-white/[0.075] px-4 shadow-glass backdrop-blur-2xl sm:px-5">
-          <div className="pointer-events-none absolute inset-x-8 top-0 h-px bg-gradient-to-r from-transparent via-white/50 to-transparent" />
+        <div className="relative flex min-h-16 items-center justify-between overflow-hidden rounded-full border border-white/5 bg-white/[0.075] px-4 shadow-glass backdrop-blur-2xl sm:px-5">
+          <div className="pointer-events-none absolute inset-x-8 top-0 h-px bg-gradient-to-r from-transparent via-white/5 to-transparent" />
           <div className="flex items-center gap-5">
-            <div className="flex flex-shrink-0 items-center gap-3">
-              <div className="flex h-10 w-10 items-center justify-center overflow-hidden rounded-full border border-white/20 bg-frost shadow-[0_10px_35px_rgba(37,99,235,0.26)]">
-                <img src="/traige-logo.png" alt="Traige logo" className="h-12 w-12 object-cover object-center" />
-              </div>
-              <span className="font-display text-lg font-bold tracking-wide text-white">
+            <div className="flex flex-shrink-0 items-center gap-3 pr-20">
+              <span 
+                className="text-xl pr-1 pt-1 font-bold pl-2 pr-2"
+                style={{ color: '#885AF0', }}
+              >
                 TRAIGE
               </span>
             </div>
-            
-            <div className="hidden items-center rounded-full border border-white/10 bg-black/15 p-1 md:flex gap-1">
+
               {navItems.map((item) => (
                 <NavLink
                   key={item.name}
                   to={item.path}
                   end={item.path === '/'}
                   className={({ isActive }) => cn(
-                    "flex items-center gap-2 rounded-full px-3.5 py-2 text-xs font-bold uppercase tracking-[0.12em] transition-all duration-300",
-                    isActive 
-                      ? "bg-white/15 text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.26),0_12px_30px_rgba(37,99,235,0.2)]" 
-                      : "text-textMuted hover:bg-white/10 hover:text-white"
+                    "hidden md:flex items-center gap-2 rounded-full px-3.5 py-2 text-xs font-bold uppercase tracking-[0.12em] transition-all duration-300",
+                    isActive
+                      ? "text-[#885AF0]"
+                      : "text-textMuted hover:text-[#885AF0]"
                   )}
                 >
                   <item.icon size={16} />
                   {item.name}
                 </NavLink>
               ))}
-            </div>
           </div>
-          
-          <div className="flex items-center gap-3">
+
+          <div className="flex items-center gap-3 pl-15">
             <NavLink
               to="/profile"
               className={({ isActive }) => cn(
@@ -70,7 +68,7 @@ export const TopNav = () => {
             >
               <LogOut size={18} />
             </button>
-            
+
             {/* Mobile menu toggle */}
             <button
               onClick={() => setMobileOpen(!mobileOpen)}
@@ -95,9 +93,9 @@ export const TopNav = () => {
                 onClick={() => setMobileOpen(false)}
                 className={({ isActive }) => cn(
                   "flex items-center gap-3 rounded-2xl px-3 py-3 text-sm font-semibold transition-colors",
-                  isActive 
-                    ? "bg-white/12 text-white" 
-                    : "text-textMuted hover:bg-white/10 hover:text-white"
+                  isActive
+                    ? "text-[#885AF0]"
+                    : "text-textMuted hover:text-[#885AF0]"
                 )}
               >
                 <item.icon size={16} />
@@ -109,7 +107,7 @@ export const TopNav = () => {
               onClick={() => setMobileOpen(false)}
               className={({ isActive }) => cn(
                 "flex items-center gap-3 rounded-2xl px-3 py-3 text-sm font-semibold transition-colors",
-                isActive ? "bg-white/12 text-white" : "text-textMuted hover:bg-white/10 hover:text-white"
+                isActive ? "text-[#885AF0]" : "text-textMuted hover:text-[#885AF0]"
               )}
             >
               <User size={16} />
