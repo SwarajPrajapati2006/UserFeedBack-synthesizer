@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { useAuthStore } from '../../store/authStore';
-import { LogOut, Activity, MessageSquare, BarChart2, Hash, Zap, Sparkles, User, Menu, X } from 'lucide-react';
+import { LogOut, MessageSquare, BarChart2, Hash, Zap, Sparkles, User, Menu, X, LayoutDashboard } from 'lucide-react';
 import { cn } from '../../utils/cn';
 
 export const TopNav = () => {
@@ -9,7 +9,7 @@ export const TopNav = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
 
   const navItems = [
-    { name: 'Dashboard', path: '/', icon: Activity },
+    { name: 'Dashboard', path: '/', icon: LayoutDashboard },
     { name: 'Shortlist', path: '/shortlist', icon: Zap },
     { name: 'Clusters', path: '/clusters', icon: Hash },
     { name: 'Trend', path: '/trend', icon: BarChart2 },
@@ -18,30 +18,31 @@ export const TopNav = () => {
   ];
 
   return (
-    <nav className="sticky top-0 z-50 w-full border-b border-borderLight bg-background/50 backdrop-blur-xl">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between h-16">
-          <div className="flex items-center gap-8">
-            <div className="flex-shrink-0 flex items-center gap-2">
-              <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-violet-500 to-cyan-400 flex items-center justify-center shadow-lg shadow-violet-500/20">
-                <Activity size={18} className="text-white" />
+    <nav className="sticky top-0 z-50 w-full px-3 py-4">
+      <div className="mx-auto max-w-7xl">
+        <div className="relative flex min-h-16 items-center justify-between overflow-hidden rounded-full border border-white/20 bg-white/[0.075] px-4 shadow-glass backdrop-blur-2xl sm:px-5">
+          <div className="pointer-events-none absolute inset-x-8 top-0 h-px bg-gradient-to-r from-transparent via-white/50 to-transparent" />
+          <div className="flex items-center gap-5">
+            <div className="flex flex-shrink-0 items-center gap-3">
+              <div className="flex h-10 w-10 items-center justify-center overflow-hidden rounded-full border border-white/20 bg-frost shadow-[0_10px_35px_rgba(37,99,235,0.26)]">
+                <img src="/traige-logo.png" alt="Traige logo" className="h-12 w-12 object-cover object-center" />
               </div>
-              <span className="font-bold text-lg tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-white to-white/70">
-                Synthesizer
+              <span className="font-display text-lg font-bold tracking-wide text-white">
+                TRAIGE
               </span>
             </div>
             
-            <div className="hidden md:flex space-x-1">
+            <div className="hidden items-center rounded-full border border-white/10 bg-black/15 p-1 md:flex gap-1">
               {navItems.map((item) => (
                 <NavLink
                   key={item.name}
                   to={item.path}
                   end={item.path === '/'}
                   className={({ isActive }) => cn(
-                    "flex items-center gap-2 px-3 py-2 rounded-md text-sm font-medium transition-colors",
+                    "flex items-center gap-2 rounded-full px-3.5 py-2 text-xs font-bold uppercase tracking-[0.12em] transition-all duration-300",
                     isActive 
-                      ? "bg-panel text-violet-400 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.05)]" 
-                      : "text-textMuted hover:text-textMain hover:bg-panelHover"
+                      ? "bg-white/15 text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.26),0_12px_30px_rgba(37,99,235,0.2)]" 
+                      : "text-textMuted hover:bg-white/10 hover:text-white"
                   )}
                 >
                   <item.icon size={16} />
@@ -55,16 +56,16 @@ export const TopNav = () => {
             <NavLink
               to="/profile"
               className={({ isActive }) => cn(
-                "hidden sm:flex items-center gap-2 px-3 py-1.5 rounded-md text-sm transition-colors",
-                isActive ? "text-violet-400" : "text-textMuted hover:text-textMain"
+                "hidden max-w-[190px] items-center gap-2 truncate rounded-full border border-white/10 bg-white/[0.055] px-3 py-2 text-sm font-medium transition-all sm:flex",
+                isActive ? "text-cyan-200 shadow-[0_0_30px_rgba(98,230,255,0.13)]" : "text-textMuted hover:text-white"
               )}
             >
               <User size={16} />
-              {user?.name || user?.email || 'Profile'}
+              <span className="truncate">{user?.name || user?.email || 'Profile'}</span>
             </NavLink>
             <button
               onClick={logout}
-              className="hidden sm:flex p-2 text-textMuted hover:text-rose-400 hover:bg-rose-500/10 rounded-full transition-colors"
+              className="hidden rounded-full border border-white/10 bg-white/[0.055] p-2.5 text-textMuted transition-all hover:border-rose-400/30 hover:bg-rose-500/10 hover:text-rose-300 sm:flex"
               title="Logout"
             >
               <LogOut size={18} />
@@ -73,7 +74,8 @@ export const TopNav = () => {
             {/* Mobile menu toggle */}
             <button
               onClick={() => setMobileOpen(!mobileOpen)}
-              className="md:hidden p-2 text-textMuted hover:text-white transition-colors"
+              className="rounded-full border border-white/10 bg-white/[0.055] p-2 text-textMuted transition-colors hover:text-white md:hidden"
+              aria-label="Toggle navigation menu"
             >
               {mobileOpen ? <X size={22} /> : <Menu size={22} />}
             </button>
@@ -83,8 +85,8 @@ export const TopNav = () => {
 
       {/* Mobile dropdown menu */}
       {mobileOpen && (
-        <div className="md:hidden border-t border-borderLight bg-background/95 backdrop-blur-xl">
-          <div className="px-4 py-3 space-y-1">
+        <div className="mx-auto mt-3 max-w-7xl rounded-3xl border border-white/15 bg-background/80 p-3 shadow-glass backdrop-blur-2xl md:hidden">
+          <div className="space-y-1">
             {navItems.map((item) => (
               <NavLink
                 key={item.name}
@@ -92,10 +94,10 @@ export const TopNav = () => {
                 end={item.path === '/'}
                 onClick={() => setMobileOpen(false)}
                 className={({ isActive }) => cn(
-                  "flex items-center gap-3 px-3 py-2.5 rounded-md text-sm font-medium transition-colors",
+                  "flex items-center gap-3 rounded-2xl px-3 py-3 text-sm font-semibold transition-colors",
                   isActive 
-                    ? "bg-panel text-violet-400" 
-                    : "text-textMuted hover:text-textMain hover:bg-panelHover"
+                    ? "bg-white/12 text-white" 
+                    : "text-textMuted hover:bg-white/10 hover:text-white"
                 )}
               >
                 <item.icon size={16} />
@@ -106,8 +108,8 @@ export const TopNav = () => {
               to="/profile"
               onClick={() => setMobileOpen(false)}
               className={({ isActive }) => cn(
-                "flex items-center gap-3 px-3 py-2.5 rounded-md text-sm font-medium transition-colors",
-                isActive ? "bg-panel text-violet-400" : "text-textMuted hover:text-textMain hover:bg-panelHover"
+                "flex items-center gap-3 rounded-2xl px-3 py-3 text-sm font-semibold transition-colors",
+                isActive ? "bg-white/12 text-white" : "text-textMuted hover:bg-white/10 hover:text-white"
               )}
             >
               <User size={16} />
@@ -115,7 +117,7 @@ export const TopNav = () => {
             </NavLink>
             <button
               onClick={() => { logout(); setMobileOpen(false); }}
-              className="flex items-center gap-3 w-full px-3 py-2.5 rounded-md text-sm font-medium text-rose-400 hover:bg-rose-500/10 transition-colors"
+              className="flex w-full items-center gap-3 rounded-2xl px-3 py-3 text-sm font-semibold text-rose-300 transition-colors hover:bg-rose-500/10"
             >
               <LogOut size={16} />
               Sign Out
