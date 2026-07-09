@@ -31,10 +31,11 @@ export default function SubmitFeedback() {
   };
 
   return (
-    <div className="max-w-2xl mx-auto space-y-6">
-      <div className="mb-8">
-        <h1 className="text-3xl font-bold text-white mb-2">Submit Feedback</h1>
-        <p className="text-textMuted">Simulate incoming feedback. Our AI pipeline will analyze sentiment, classify the cluster, and assign a priority score instantly.</p>
+    <div className="max-w-3xl mx-auto space-y-6">
+      <div className="glass-panel p-6 sm:p-8">
+        <p className="mb-2 text-sm font-bold uppercase tracking-[0.22em] text-cyan-200">New Signal</p>
+        <h1 className="font-display text-4xl font-bold text-white mb-3">Submit Feedback</h1>
+        <p className="text-textMuted">Simulate incoming feedback. The pipeline will analyze sentiment, classify the cluster, and assign a priority score instantly.</p>
       </div>
 
       <GlassCard className="p-6">
@@ -46,7 +47,7 @@ export default function SubmitFeedback() {
               required
               value={productName}
               onChange={e => setProductName(e.target.value)}
-              className="w-full bg-background/50 border border-borderLight rounded-lg px-4 py-2.5 text-white focus:outline-none focus:border-violet-500 focus:ring-1 focus:ring-violet-500 transition-colors"
+              className="field-glass"
               placeholder="e.g. Mobile App v2"
             />
           </div>
@@ -56,7 +57,7 @@ export default function SubmitFeedback() {
             <select
               value={source}
               onChange={e => setSource(e.target.value)}
-              className="w-full bg-background/50 border border-borderLight rounded-lg px-4 py-2.5 text-white focus:outline-none focus:border-violet-500 focus:ring-1 focus:ring-violet-500 transition-colors appearance-none"
+              className="field-glass appearance-none"
             >
               <option value="In-App Form">In-App Form</option>
               <option value="App Store Review">App Store Review</option>
@@ -72,7 +73,7 @@ export default function SubmitFeedback() {
               rows={4}
               value={text}
               onChange={e => setText(e.target.value)}
-              className="w-full bg-background/50 border border-borderLight rounded-lg px-4 py-2.5 text-white focus:outline-none focus:border-violet-500 focus:ring-1 focus:ring-violet-500 transition-colors resize-none"
+              className="field-glass resize-none"
               placeholder="What are users saying?"
             />
           </div>
@@ -81,7 +82,7 @@ export default function SubmitFeedback() {
             <button
               type="submit"
               disabled={mutation.isPending}
-              className="bg-violet-600 hover:bg-violet-500 text-white font-medium rounded-lg px-6 py-2.5 transition-colors disabled:opacity-70 disabled:cursor-not-allowed flex items-center gap-2 min-w-[140px] justify-center"
+              className="primary-button min-w-[150px]"
             >
               {mutation.isPending ? (
                 <>
