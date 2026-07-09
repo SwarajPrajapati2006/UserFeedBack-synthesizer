@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { useAuthStore } from '../../store/authStore';
-import { LogOut, MessageSquare, BarChart2, Hash, Zap, Sparkles, User, Menu, X, LayoutDashboard } from 'lucide-react';
+import { LogOut, MessageSquare, BarChart2, Hash, Zap, Sparkles, User, Menu, X, LayoutDashboard, Crown } from 'lucide-react';
 import { cn } from '../../utils/cn';
 
 export const TopNav = () => {
@@ -15,6 +15,7 @@ export const TopNav = () => {
     { name: 'Trend', path: '/trend', icon: BarChart2 },
     { name: 'Submit', path: '/submit', icon: MessageSquare },
     { name: 'AI Summary', path: '/summary', icon: Sparkles },
+    { name: 'Plans', path: '/plans', icon: Crown },
   ];
 
   return (
@@ -23,7 +24,7 @@ export const TopNav = () => {
         <div className="relative flex min-h-16 items-center justify-between overflow-hidden rounded-full border border-white/5 bg-white/[0.075] px-4 shadow-glass backdrop-blur-2xl sm:px-5">
           <div className="pointer-events-none absolute inset-x-8 top-0 h-px bg-gradient-to-r from-transparent via-white/5 to-transparent" />
           <div className="flex items-center gap-5">
-            <div className="flex flex-shrink-0 items-center gap-3 pr-20">
+            <div className="flex flex-shrink-0 items-center gap-3 pr-6 lg:pr-12">
               <span 
                 className="text-xl pr-1 pt-1 font-bold pl-2 pr-2"
                 style={{ color: '#885AF0', }}
@@ -44,13 +45,13 @@ export const TopNav = () => {
                       : "text-textMuted hover:text-[#885AF0]"
                   )}
                 >
-                  <item.icon size={16} />
-                  {item.name}
+                  <item.icon size={16} className="shrink-0" />
+                  <span className="whitespace-nowrap">{item.name}</span>
                 </NavLink>
               ))}
           </div>
 
-          <div className="flex items-center gap-3 pl-15">
+          <div className="flex flex-shrink-0 items-center gap-3 pl-6 lg:pl-10">
             <NavLink
               to="/profile"
               className={({ isActive }) => cn(

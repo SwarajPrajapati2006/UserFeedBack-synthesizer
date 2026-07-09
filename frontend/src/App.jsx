@@ -18,6 +18,7 @@ import SubmitFeedback from './pages/SubmitFeedback';
 import AISummary from './pages/AISummary';
 import Profile from './pages/Profile';
 import Landing from './pages/Landing';
+import Plans from './pages/Plans';
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -50,6 +51,7 @@ function App() {
         <Routes>
           <Route path="/login" element={<Auth />} />
           <Route path="/" element={<Landing />} />
+          <Route path="/plans" element={<Plans />} />
 
           <Route element={<ProtectedRoute />}>
             <Route path="/dashboard" element={<Dashboard />} />
